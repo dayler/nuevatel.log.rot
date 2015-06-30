@@ -132,14 +132,20 @@ public class MysqlScriptExecutor {
                     command.append(" ");
                     Statement statement = conn.createStatement();
 
+                    println(">>>>>>");
                     println(command);
+                    println(">>>>>>");
 
                     boolean hasResults = false;
                     if (stopOnError) {
+                        println("+++++");
                         hasResults = statement.execute(command.toString());
+                        println("+++++");
                     } else {
                         try {
+                            println("+++++-----");
                             statement.execute(command.toString());
+                            println("+++++-----");
                         } catch (SQLException e) {
                             e.fillInStackTrace();
                             printlnError("Error executing: " + command);
