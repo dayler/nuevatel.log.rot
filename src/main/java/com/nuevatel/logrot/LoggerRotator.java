@@ -74,7 +74,7 @@ public class LoggerRotator {
             // Get delimiter
             Boolean fullLineDelimiter = Boolean.parseBoolean(prop.getProperty("logrotate.fulllinedelimiter", "false"));
             String tmpDelimiter = null;
-            if (!StringUtils.isBlank((tmpDelimiter = prop.getProperty("logrotate.sqlscript")))) {
+            if (!StringUtils.isBlank((tmpDelimiter = prop.getProperty("logrotate.delimiter")))) {
                 executor.setDelimiter(tmpDelimiter, fullLineDelimiter);
             }
 
