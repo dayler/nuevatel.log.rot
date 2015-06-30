@@ -120,9 +120,11 @@ public class MysqlScriptExecutor {
                 } else if (trimmedLine.length() < 1
                         || trimmedLine.startsWith("//")) {
                     // Do nothing
+                    println("** Do nothing");
                 } else if (trimmedLine.length() < 1
                         || trimmedLine.startsWith("--")) {
                     // Do nothing
+                    println("** Do nothing");
                 } else if (!fullLineDelimiter
                         && trimmedLine.endsWith(getDelimiter())
                         || fullLineDelimiter
