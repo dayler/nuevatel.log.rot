@@ -106,7 +106,6 @@ public class MysqlScriptExecutor {
      */
     private void runScript(Connection conn, Reader reader) throws IOException,
             SQLException {
-        println("** " + getDelimiter() + " **");
         StringBuffer command = null;
         try {
             LineNumberReader lineReader = new LineNumberReader(reader);
@@ -121,11 +120,9 @@ public class MysqlScriptExecutor {
                 } else if (trimmedLine.length() < 1
                         || trimmedLine.startsWith("//")) {
                     // Do nothing
-                    println("** Do nothing");
                 } else if (trimmedLine.length() < 1
                         || trimmedLine.startsWith("--")) {
                     // Do nothing
-                    println("** Do nothing");
                 } else if (!fullLineDelimiter
                         && trimmedLine.endsWith(getDelimiter())
                         || fullLineDelimiter
@@ -135,20 +132,14 @@ public class MysqlScriptExecutor {
                     command.append(" ");
                     Statement statement = conn.createStatement();
 
-                    println(">>>>>>");
                     println(command);
-                    println(">>>>>>");
 
                     boolean hasResults = false;
                     if (stopOnError) {
-                        println("+++++");
                         hasResults = statement.execute(command.toString());
-                        println("+++++");
                     } else {
                         try {
-                            println("+++++-----");
                             statement.execute(command.toString());
-                            println("+++++-----");
                         } catch (SQLException e) {
                             e.fillInStackTrace();
                             printlnError("Error executing: " + command);

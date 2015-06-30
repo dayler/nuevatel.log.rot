@@ -83,7 +83,7 @@ public class LoggerRotator {
                                     .replaceAll("\\$tableName\\$", tName)
                                     .replaceAll("\\$suffix\\$", suffix);
                 if (debug) {
-                    System.out.println("Script:"+ script);
+                    System.out.println("Script:\n" + script + "\n");
                 }
                 tmp = new StringReader(script);
                 executor.runScript(tmp);
