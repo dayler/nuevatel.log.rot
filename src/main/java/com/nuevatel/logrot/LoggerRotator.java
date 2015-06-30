@@ -71,6 +71,13 @@ public class LoggerRotator {
             conn = new DataSourceManagerImpl().getConnection();
             MysqlScriptExecutor executor = new MysqlScriptExecutor(conn, false, false);
 
+            // Get delimiter
+            Boolean fullLineDelimiter = Boolean.parseBoolean(prop.getProperty("logrotate.fulllinedelimiter", "false"));
+            String tmpDelimiter = null;
+            if (!StringUtils.isBlank((tmpDelimiter = prop.getProperty("logrotate.sqlscript")))) {
+                executor.setDelimiter(tmpDelimiter, fullLineDelimiter);
+            }
+
             for (String tName : tables) {
                 String script = template.replaceAll("\\$schema\\$", schemaName)
                                     .replaceAll("\\$tableName\\$", tName)
