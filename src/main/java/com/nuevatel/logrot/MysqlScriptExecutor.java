@@ -106,6 +106,7 @@ public class MysqlScriptExecutor {
      */
     private void runScript(Connection conn, Reader reader) throws IOException,
             SQLException {
+        println("** " + getDelimiter() + " **");
         StringBuffer command = null;
         try {
             LineNumberReader lineReader = new LineNumberReader(reader);
